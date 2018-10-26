@@ -6,5 +6,10 @@ This is a quick hack to discover other users who open the same dapp, and add the
 
 Simply type this in your console:
 ```sh
-$ ./start.sh
+$ ./server.js
+```
+
+To see how many users have used the app run:
+```sh
+$ ./uniqueUsers.js
 ```

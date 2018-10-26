@@ -3,6 +3,8 @@
 const IPFS = require('ipfs')
 const ipfsAPI = require('ipfs-api')
 const Pubsub = require('orbit-db-pubsub')
+const DotJson = require('dot-json')
+const sha256 = require('js-sha256').sha256
 
 const IPFS_OPTIONS = {
   EXPERIMENTAL: {
@@ -10,6 +12,8 @@ const IPFS_OPTIONS = {
   }
 }
 const DISCOVER_ROOM = '3box-discover'
+
+const jf = new DotJson('users.json')
 
 // Create IPFS instance
 const ipfs = new IPFS(IPFS_OPTIONS)
@@ -23,6 +27,7 @@ ipfs.on('ready', async () => {
       knownAddrs[userAddr] = true
       peerNum++
       console.log(peerNum, 'unique users have been connected')
+      jf.set(sha256(userAddr), true).save()
     }
   }, () => {})
 })
@@ -41,7 +46,7 @@ ipfs.on('ready', async () => {
 const express = require('express')
 const serveStatic = require('serve-static')
 const path = require('path')
-const port = 443
+const port = 40001
 
 const app = express()
 app.use(serveStatic(path.join(__dirname), {'index': ['index.html']}))
