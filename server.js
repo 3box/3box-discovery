@@ -41,7 +41,7 @@ ipfs.on('ready', async () => {
 const express = require('express')
 const serveStatic = require('serve-static')
 const path = require('path')
-const port = 40001
+const port = 443
 
 const app = express()
 app.use(serveStatic(path.join(__dirname), {'index': ['index.html']}))
