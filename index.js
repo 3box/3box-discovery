@@ -8,7 +8,7 @@ bopen.addEventListener('click', event => {
     loginb.style.display = 'none'
     updateProfileData(box)
 
-    box._ipfs.swarm.connect('/ip4/10.1.0.5/tcp/4003/ws/ipfs/QmSMcMa3hRgDjvsvbNihsUNZ9ywW19etQBRB6dbnrptfRP', console.log)
+    box._ipfs.swarm.connect('/dnsaddr/discover.3box.io/tcp/443/wss/ipfs/QmVpzUgkCvMhTXqUSisV3bA8HdkLftVFwBd8RzJx39ezx3', console.log)
 
     let knownAddrs = {}
     let peerNum = 0
@@ -26,11 +26,10 @@ bopen.addEventListener('click', event => {
     setInterval(() => {
       box._pubsub.publish(DISCOVER_ROOM, ethAddr)
     }, 1000)
-
   })
 })
 
-function updateProfileData(box) {
+function updateProfileData (box) {
   console.log('rendering profile')
   box.public.all().then(profile => {
     profileData.innerHTML = renderUser(profile)
@@ -38,7 +37,7 @@ function updateProfileData(box) {
   updateContactList()
 }
 
-async function updateContactList() {
+async function updateContactList () {
   contacts.innerHTML = ''
   console.log('ucl')
   let contact = null
