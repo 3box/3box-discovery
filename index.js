@@ -8,7 +8,7 @@ bopen.addEventListener('click', event => {
     loginb.style.display = 'none'
     updateProfileData(box)
 
-    box._ipfs.swarm.connect('/dnsaddr/discover.3box.io/tcp/443/wss/ipfs/QmVpzUgkCvMhTXqUSisV3bA8HdkLftVFwBd8RzJx39ezx3', console.log)
+    box._ipfs.swarm.connect('/dnsaddr/discover.3box.io/tcp/9443/wss/ipfs/QmVpzUgkCvMhTXqUSisV3bA8HdkLftVFwBd8RzJx39ezx3', console.log)
 
     let knownAddrs = {}
     let peerNum = 0
